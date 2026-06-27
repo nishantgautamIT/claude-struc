@@ -1,0 +1,11 @@
+{
+  "name": "nishant-claude-kit",
+  "owner": { "name": "Nishant Gautam", "url": "https://github.com/nishantgautamIT" },
+  "plugins": [
+    {
+      "name": "spring-boot-claude-kit",
+      "source": "./",
+      "description": "Skills, subagents, and slash commands for Spring Boot microservices."
+    }
+  ]
+}

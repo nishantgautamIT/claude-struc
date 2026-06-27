@@ -1,5 +1,7 @@
 # claude-struc
 
+[![validate-config](https://github.com/nishantgautamIT/claude-struc/actions/workflows/validate.yml/badge.svg)](https://github.com/nishantgautamIT/claude-struc/actions/workflows/validate.yml)
+
 A ready-to-use **Claude Code** configuration scaffold for **Spring Boot microservices**
 (Java 21, Spring Boot 3.x). Drop it into a service repo to give Claude Code shared
 project context, guardrails, reusable workflows, and live access to your tooling
@@ -127,8 +129,8 @@ Gives Claude live access to your tooling. All values use `${ENV_VAR}` placeholde
 
 1. **Copy** `.claude/`, `CLAUDE.md`, and `.mcp.json` into your service repo
    (or use this repo as a GitHub **template**).
-2. **Edit `CLAUDE.md`** — set the service name, build commands (Maven *or* Gradle),
-   and any service-specific conventions.
+2. **Edit `CLAUDE.md`** — set the service name and any service-specific conventions
+   (build tool is Maven; swap the commands if your service uses Gradle).
 3. **Export MCP env vars** (see `CLAUDE.local.md`):
    ```sh
    export DATADOG_API_KEY="..."   DATADOG_APP_KEY="..."
@@ -151,9 +153,24 @@ Gives Claude live access to your tooling. All values use `${ENV_VAR}` placeholde
 
 ---
 
+## Install as a plugin (experimental)
+
+Instead of copying files per repo, this repo also ships a plugin marketplace manifest so
+teammates can install the skills, agents, and commands org-wide from one source:
+
+```
+/plugin marketplace add nishantgautamIT/claude-struc
+/plugin install spring-boot-claude-kit
+```
+
+> ⚠️ **Needs testing.** The plugin manifests in `.claude-plugin/` are a starting point.
+> **Hooks are not distributed via the plugin** — they're wired in `settings.json`, whereas
+> plugins expect a `hooks/hooks.json`. Verify command/agent/skill discovery after install and
+> migrate the hooks separately if you want them shipped through the plugin.
+
 ## Notes
 
 - `CLAUDE.local.md` and `.claude/settings.local.json` are intended as personal/local files.
   Re-add them to `.gitignore` if you don't want them shared.
-- This scaffold can graduate into a team-wide **plugin/marketplace** so many repos and
-  teammates share the same skills, commands, and agents from one source.
+- CI (`.github/workflows/validate.yml`) validates JSON, shellchecks the hooks, and checks
+  skill/agent frontmatter on every PR.

@@ -1,6 +1,9 @@
 #!/usr/bin/env bash
 # PreToolUse(Bash): block push/deploy/publish. Exit 2 feeds the message back to Claude.
+# Escape hatch: set CS_ALLOW_PUSH=1 in the environment to allow an authorized push/deploy.
 set -uo pipefail
+
+[ "${CS_ALLOW_PUSH:-}" = "1" ] && exit 0
 
 cmd=$(python3 -c "import json,sys; print(json.load(sys.stdin).get('tool_input',{}).get('command',''))" 2>/dev/null) || exit 0
 
