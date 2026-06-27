@@ -1,0 +1,58 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="860" height="430" viewBox="0 0 860 430" font-family="system-ui, sans-serif">
+  <rect width="860" height="430" rx="14" fill="#0d1117"/>
+  <rect x="1" y="1" width="858" height="428" rx="14" fill="none" stroke="#30363d"/>
+  <text x="32" y="44" font-size="22" font-weight="700" fill="#e6edf3">How a request flows through the config</text>
+  <line x1="32" y1="60" x2="828" y2="60" stroke="#30363d"/>
+
+  <!-- developer -->
+  <rect x="40" y="170" width="120" height="64" rx="10" fill="#161b22" stroke="#30363d"/>
+  <text x="100" y="198" font-size="14" font-weight="700" fill="#e6edf3" text-anchor="middle">Developer</text>
+  <text x="100" y="218" font-size="12" fill="#8b949e" text-anchor="middle">prompt / /command</text>
+
+  <!-- claude core -->
+  <rect x="330" y="150" width="200" height="104" rx="12" fill="#161b22" stroke="#58a6ff"/>
+  <text x="430" y="182" font-size="16" font-weight="700" fill="#e6edf3" text-anchor="middle">Claude Code</text>
+  <text x="430" y="206" font-size="12" fill="#8b949e" text-anchor="middle">+ CLAUDE.md &amp; rules/</text>
+  <text x="430" y="224" font-size="12" fill="#8b949e" text-anchor="middle">(always in context)</text>
+
+  <!-- arrow dev -> claude -->
+  <line x1="160" y1="202" x2="324" y2="202" stroke="#6e7681" stroke-width="2" marker-end="url(#a)"/>
+
+  <!-- skills -->
+  <rect x="610" y="80" width="210" height="44" rx="9" fill="#0f2417" stroke="#3fb950"/>
+  <text x="624" y="107" font-size="13" fill="#3fb950" font-weight="700">skills/</text>
+  <text x="700" y="107" font-size="12" fill="#8b949e">auto-selected</text>
+
+  <!-- agents -->
+  <rect x="610" y="134" width="210" height="44" rx="9" fill="#1c1430" stroke="#bc8cff"/>
+  <text x="624" y="161" font-size="13" fill="#bc8cff" font-weight="700">agents/</text>
+  <text x="700" y="161" font-size="12" fill="#8b949e">delegated (own context)</text>
+
+  <!-- mcp -->
+  <rect x="610" y="188" width="210" height="44" rx="9" fill="#13233a" stroke="#58a6ff"/>
+  <text x="624" y="215" font-size="13" fill="#58a6ff" font-weight="700">.mcp.json</text>
+  <text x="700" y="215" font-size="12" fill="#8b949e">live data (DD/Jira/...)</text>
+
+  <!-- commands -->
+  <rect x="610" y="242" width="210" height="44" rx="9" fill="#2a1a0c" stroke="#f0883e"/>
+  <text x="624" y="269" font-size="13" fill="#f0883e" font-weight="700">commands/</text>
+  <text x="700" y="269" font-size="12" fill="#8b949e">you trigger /name</text>
+
+  <!-- arrows claude -> right boxes -->
+  <line x1="530" y1="180" x2="604" y2="102" stroke="#6e7681" stroke-width="2" marker-end="url(#a)"/>
+  <line x1="530" y1="192" x2="604" y2="156" stroke="#6e7681" stroke-width="2" marker-end="url(#a)"/>
+  <line x1="530" y1="212" x2="604" y2="210" stroke="#6e7681" stroke-width="2" marker-end="url(#a)"/>
+  <line x1="530" y1="226" x2="604" y2="264" stroke="#6e7681" stroke-width="2" marker-end="url(#a)"/>
+
+  <!-- hooks band -->
+  <rect x="330" y="300" width="490" height="48" rx="10" fill="#2a0f0f" stroke="#f85149"/>
+  <text x="346" y="322" font-size="13" font-weight="700" fill="#f85149">hooks/</text>
+  <text x="346" y="339" font-size="12" fill="#8b949e">harness intercepts every tool call — format on edit · block push/secret · test reminder</text>
+  <line x1="430" y1="254" x2="430" y2="296" stroke="#f85149" stroke-width="2" stroke-dasharray="5 4" marker-end="url(#a)"/>
+
+  <defs>
+    <marker id="a" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto">
+      <path d="M0,0 L9,4.5 L0,9 z" fill="#6e7681"/>
+    </marker>
+  </defs>
+</svg>
