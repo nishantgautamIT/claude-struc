@@ -1,0 +1,9 @@
+{
+  "name": "spring-boot-claude-kit",
+  "version": "0.1.0",
+  "description": "Claude Code kit for Spring Boot microservices: review/dev-workflow skills, code-reviewer & incident-investigator agents, and slash commands.",
+  "author": { "name": "Nishant Gautam", "url": "https://github.com/nishantgautamIT" },
+  "commands": ["./.claude/commands"],
+  "agents": ["./.claude/agents"],
+  "skills": ["./.claude/skills"]
+}

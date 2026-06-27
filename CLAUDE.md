@@ -12,20 +12,13 @@ container image and deployed to Kubernetes. Observability via Datadog (APM + log
 
 ## Setup & commands
 
-Maven (delete this block if you use Gradle):
+Build tool: **Maven**.
 
 - Build: `mvn clean package`
 - Run locally: `mvn spring-boot:run`
 - Test: `mvn test`
 - Single test: `mvn test -Dtest=ClassName#method`
 - Format/lint: `mvn spotless:apply` (or `mvn checkstyle:check`)
-
-Gradle (delete this block if you use Maven):
-
-- Build: `./gradlew build`
-- Run locally: `./gradlew bootRun`
-- Test: `./gradlew test`
-- Single test: `./gradlew test --tests "ClassName.method"`
 
 ## Conventions
 
@@ -50,7 +43,7 @@ Required env vars must be exported before launch — see `CLAUDE.local.md` for t
 
 ## Do / Don't
 
-- Do: run `mvn test` (or `./gradlew test`) before claiming a change works.
+- Do: run `mvn test` before claiming a change works.
 - Do: add/adjust tests for every behavior change.
 - Don't: commit or push unless explicitly asked.
 - Don't: log secrets, tokens, PII, or full request bodies.

@@ -1,0 +1,49 @@
+name: validate-config
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Validate JSON files
+        run: |
+          fail=0
+          for f in .mcp.json .claude/settings.json .claude/settings.local.json \
+                   .claude-plugin/plugin.json .claude-plugin/marketplace.json; do
+            [ -f "$f" ] || continue
+            if python3 -c "import json,sys; json.load(open('$f'))"; then
+              echo "OK   $f"
+            else
+              echo "FAIL $f (invalid JSON)"; fail=1
+            fi
+          done
+          exit $fail
+
+      - name: Shellcheck hooks
+        run: |
+          sudo apt-get update -qq && sudo apt-get install -y -qq shellcheck
+          shellcheck .claude/hooks/*.sh
+
+      - name: Validate skill & agent frontmatter
+        run: |
+          python3 - <<'PY'
+          import glob, sys
+          bad = []
+          for f in glob.glob(".claude/skills/*/SKILL.md") + glob.glob(".claude/agents/*.md"):
+              head = open(f, encoding="utf-8").read()
+              if not head.startswith("---"):
+                  bad.append((f, "missing frontmatter")); continue
+              fm = head.split("---", 2)[1]
+              if "name:" not in fm or "description:" not in fm:
+                  bad.append((f, "missing name/description"))
+          if bad:
+              for f, why in bad: print(f"FAIL {f}: {why}")
+              sys.exit(1)
+          print("All skill/agent frontmatter OK")
+          PY
