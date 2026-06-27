@@ -1,0 +1,70 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="860" height="660" viewBox="0 0 860 660" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace">
+  <rect width="860" height="660" rx="14" fill="#0d1117"/>
+  <rect x="1" y="1" width="858" height="658" rx="14" fill="none" stroke="#30363d"/>
+
+  <text x="32" y="46" font-size="22" font-weight="700" fill="#e6edf3" font-family="system-ui, sans-serif">claude-struc/ — repository layout</text>
+  <line x1="32" y1="62" x2="828" y2="62" stroke="#30363d"/>
+
+  <!-- legend -->
+  <g font-size="12" font-family="system-ui, sans-serif">
+    <rect x="32"  y="80" width="12" height="12" rx="3" fill="#8b949e"/><text x="50"  y="90" fill="#8b949e">config</text>
+    <rect x="120" y="80" width="12" height="12" rx="3" fill="#58a6ff"/><text x="138" y="90" fill="#8b949e">rules</text>
+    <rect x="198" y="80" width="12" height="12" rx="3" fill="#3fb950"/><text x="216" y="90" fill="#8b949e">skills</text>
+    <rect x="276" y="80" width="12" height="12" rx="3" fill="#bc8cff"/><text x="294" y="90" fill="#8b949e">agents</text>
+    <rect x="360" y="80" width="12" height="12" rx="3" fill="#f0883e"/><text x="378" y="90" fill="#8b949e">commands</text>
+    <rect x="470" y="80" width="12" height="12" rx="3" fill="#f85149"/><text x="488" y="90" fill="#8b949e">hooks</text>
+  </g>
+
+  <g font-size="15">
+    <!-- root files -->
+    <text x="32"  y="132" fill="#e6edf3">claude-struc/</text>
+
+    <text x="48"  y="160" fill="#8b949e">├─</text><text x="84" y="160" fill="#d2a8ff">CLAUDE.md</text>
+    <text x="300" y="160" fill="#6e7681" font-size="13">loaded into context every session</text>
+
+    <text x="48"  y="186" fill="#8b949e">├─</text><text x="84" y="186" fill="#d2a8ff">CLAUDE.local.md</text>
+    <text x="300" y="186" fill="#6e7681" font-size="13">personal notes / MCP env-var list</text>
+
+    <text x="48"  y="212" fill="#8b949e">├─</text><text x="84" y="212" fill="#8b949e">.mcp.json</text>
+    <text x="300" y="212" fill="#6e7681" font-size="13">5 MCP servers (Datadog, GitHub, Jira, Sentry, PG)</text>
+
+    <text x="48"  y="238" fill="#8b949e">├─</text><text x="84" y="238" fill="#8b949e">.gitignore</text>
+
+    <text x="48"  y="264" fill="#8b949e">└─</text><text x="84" y="264" fill="#e6edf3" font-weight="700">.claude/</text>
+
+    <!-- settings -->
+    <text x="92"  y="296" fill="#8b949e">├─</text><text x="128" y="296" fill="#8b949e">settings.json</text>
+    <text x="360" y="296" fill="#6e7681" font-size="13">permissions · MCP toggle · hooks wiring</text>
+
+    <!-- rules -->
+    <text x="92"  y="328" fill="#8b949e">├─</text><text x="128" y="328" fill="#58a6ff" font-weight="700">rules/</text>
+    <text x="360" y="328" fill="#6e7681" font-size="13">general · testing · observability</text>
+
+    <!-- skills -->
+    <text x="92"  y="360" fill="#8b949e">├─</text><text x="128" y="360" fill="#3fb950" font-weight="700">skills/</text>
+    <text x="360" y="360" fill="#6e7681" font-size="13">int-code-review · int-dev-workflow</text>
+
+    <!-- agents -->
+    <text x="92"  y="392" fill="#8b949e">├─</text><text x="128" y="392" fill="#bc8cff" font-weight="700">agents/</text>
+    <text x="360" y="392" fill="#6e7681" font-size="13">code-reviewer · incident-investigator</text>
+
+    <!-- commands -->
+    <text x="92"  y="424" fill="#8b949e">├─</text><text x="128" y="424" fill="#f0883e" font-weight="700">commands/</text>
+    <text x="360" y="424" fill="#6e7681" font-size="13">new-endpoint · review · investigate · add-test</text>
+
+    <!-- hooks -->
+    <text x="92"  y="456" fill="#8b949e">└─</text><text x="128" y="456" fill="#f85149" font-weight="700">hooks/</text>
+    <text x="360" y="456" fill="#6e7681" font-size="13">format-java · guard-bash · guard-secrets · test-reminder</text>
+  </g>
+
+  <!-- footer note -->
+  <line x1="32" y1="500" x2="828" y2="500" stroke="#30363d"/>
+  <g font-family="system-ui, sans-serif" font-size="13" fill="#8b949e">
+    <text x="32" y="528" font-weight="700" fill="#e6edf3">How the layers relate</text>
+    <text x="32" y="552">• rules + CLAUDE.md  →  always-on guidance (advisory)</text>
+    <text x="32" y="574">• skills             →  Claude auto-selects when relevant</text>
+    <text x="32" y="596">• commands           →  you invoke explicitly with /name</text>
+    <text x="32" y="618">• agents             →  delegated jobs in a separate context</text>
+    <text x="32" y="640">• hooks              →  the harness enforces, deterministically (guardrails)</text>
+  </g>
+</svg>
